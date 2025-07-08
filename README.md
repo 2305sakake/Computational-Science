@@ -1,2 +1,2 @@
 # Computational Physics Projects
-This is a list of projects I have done to investigate topics in computational physics and simulate various physical phenomena.
+This is a list of projects I have done to simulate various physical phenomena and investigate topics in computational physics. Some projects, such as the Monte Carlo simulations, are not directly related to physics but I have still included them in this repository as they are still relavent technqiues in computational physics. Most projects are done on Python with a few exceptions done on MATLAB.
