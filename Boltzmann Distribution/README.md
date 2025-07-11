@@ -10,4 +10,4 @@ This program works by first creating a 1D array of ones and using a for loop to 
 
 An example result with n = 10000 and 1000000 iterations is shown below:
 
-![Energy histogram with Boltzmann distribution](boltzman_histogram.png)
+![Energy histogram with Boltzmann distribution](boltzmann_histogram.png)

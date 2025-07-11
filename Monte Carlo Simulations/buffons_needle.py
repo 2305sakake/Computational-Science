@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 500 # Number of needles
+n = 1000 # Number of needles
 
 positions = np.random.uniform(-1,1,size=(2,n)) # Positions of centers of needles
 angles = np.random.uniform(0,np.pi,size=(1,n)) # Tilt angles of needles from the horizontal

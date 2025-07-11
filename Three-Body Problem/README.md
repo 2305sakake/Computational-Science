@@ -11,3 +11,7 @@ To simulate the motion of two or three masses under each other's gravity, I used
 The variable 'a' I have included is a factor that can roughly reproduce the precession that is predicted by general relativity. You can switch between a = 0 and a small non-zero value for a to see how this affects the motion of the bodies.
 
 Also note that when running this program, the bodies can sometimes abruptly fly away from each other and this is due to the fact that the bodies get too close to each other, leading to a division by a number near 0. To fix this, you could implement a more accurate ODE solver or use finer step sizes.
+
+A sample run for the three body program is shown below:
+
+![Sample run of three body simulation](threebody.png)

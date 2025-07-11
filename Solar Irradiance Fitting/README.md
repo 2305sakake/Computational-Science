@@ -8,6 +8,10 @@ This is a program that takes real solar irradiance data and fits it to the known
 
 This is a relatively standard curve fitting program and works by first reading in the csv file using pandas, defining a function for the theoretical equation, and fitting the data to the function using scipy's curve_fit. A few things that should be noted however, is that first of all, since the raw data was quite noisy I used a Savitsky_Golay filter to produced a smoother curve for the irradiance. Secondly, I had to include an extra scaling parameter, a, to the fit to account for attenuation in the irradiance as a result of atmospheric absorption and other factors. 
 
+The plot of the irradiance curve compared with the theoretical black body curve is shown below:
+
+![Irradiance curve against theoretical curve](irradiance_curve.png)
+
 # Reference
 
 Reference Air Mass 1.5 Spectra | Grid Modernization | NREL. (2025). Nrel.gov. https://www.nrel.gov/grid/solar-resource/spectra-am1.5

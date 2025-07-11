@@ -34,6 +34,11 @@ fig, (ax1, ax2) = plt.subplots(1,2)
 ax1.axis([-Lt, Lt, -Lt, Lt])
 ax2.axis([-np.pi, np.pi, -np.pi, np.pi])
 ax1.set_aspect('equal'); ax2.set_aspect('equal')
+ax1.set_title("Simulation")
+ax2.set_title("Configuraiton space")
+ax2.set_xlabel("Top pendulum angle (rad)")
+ax2.set_ylabel("Bottom pendulum angle (rad)")
+fig.tight_layout()
 
 line, = ax1.plot([], [], 'o-') # Used for double pendulum
 trace, = ax2.plot([], []) # Used for tracing the path in configuration space
