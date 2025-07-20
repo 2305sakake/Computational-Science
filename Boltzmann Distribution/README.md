@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a program adapted from an example in Blundell and Blundell's 'Concepts from Thermal Physics' that illustrates the statistical nature of the Boltzmann distribution. To describe what this program does, first imagine we started had n sites (where n is large), each with initial energy levels of 1. Then, after each iteration, take one unit of energy from a random site and transfer it to another. If this is performed a large number of times, it turns out that the distribution of energy levels roughly approaches a Boltzmann distribution given by ln(2)exp(-E*ln(2)) where E are the energy levels.
+This is a program adapted from an example in Blundell and Blundell's 'Concepts from Thermal Physics' that illustrates the statistical nature of the Boltzmann distribution. To describe what this program does, first imagine we started with n sites (where n is large), each with initial energy levels of 1. Then, after each iteration, take one unit of energy from a random site and transfer it to another. If this is performed a large number of times, it turns out that the distribution of energy levels roughly approaches a Boltzmann distribution given by ln(2)exp(-E*ln(2)) where E are the energy levels.
 
 ## Details
 
