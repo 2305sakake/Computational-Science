@@ -28,7 +28,7 @@ for n in range(iterations):
     # Update plot every 1000 iterations
     if n % 1000 == 0:
         plt.imshow(u)
-        plt.title(f"Iteration: {n}")
+        plt.title(f"Turing Pattern Simulation\nIteration: {n}")
         plt.pause(0.01)
 
 plt.show()
