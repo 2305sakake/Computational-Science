@@ -8,7 +8,7 @@ In this project, I have created two programs that simulate the motion of a wave 
 
 ### One Dimensional Wave Simulation
 
-As explained above, '1D_wave.py' simulates the solution to the one dimensional wave equation using a finite difference approach. A few things to be noted about the code are as follows. 
+As explained above, 1D_wave.py simulates the solution to the one dimensional wave equation using a finite difference approach. A few things to be noted about the code are as follows. 
 
 First of all, when defining the necessary parameters, we allow dx to be freely chosen by the user but not dt. This is because due to the Courant-Friedrichs-Lewy condition, we require that the Courant number, c*dt/dx, is less than or equal to 1 for numerical stability. To ensure this, we choose the Courant number to be 0.99 and calculate dt from there. 
 
@@ -18,7 +18,7 @@ Otherwise, the program is quite self-explanatory and you can feel free to play a
 
 ### Two Dimensional Wave Simulation
 
-Generalizing '1D_wave.py' to two dimensions is quite straightforward and we only need to make a few changes with the way we plot the wave and our finite difference approximation. One thing that should be noted however is that we can no longer use 0.99 as our Courant number since the CFL condition in the 2D case now requires that it is less than the square root of 2 instead. This is accounted for by setting C to 0.7. As with before, you can feel free to test different initial conditions.
+Generalizing the previous code to two dimensions is quite straightforward and we only need to make a few changes with the way we plot the wave and our finite difference approximation. One thing that should be noted however is that we can no longer use 0.99 as our Courant number since the CFL condition in the 2D case now requires that it is less than the square root of 2 instead. This is accounted for by setting C to 0.7. As with before, you can feel free to test different initial conditions.
 
 A sample run of the program is shown below:
 ![Sample run of 2D_wave.py](2D_wave.gif)
