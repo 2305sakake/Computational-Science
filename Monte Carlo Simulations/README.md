@@ -11,7 +11,7 @@ This project contains several programs that feature Monte Carlo methods, where r
 This program simulates the stochastic process known as Brownian motion, where the value of a function constantly undergoes random fluctuations. One important application of this is in the context of stock prices since they are precisely an example of something that undergoes Brownian motion. In particular, the program simulation basic Brownian motion with drift. The program works by calculating the small change the path takes after each step using a random normal distribution and cumulating each of these changes to determine the whole path. This is done simultaneously for multiple paths and each are plotted on a graph. Furthermore, the program also plots all the final values of each path on a histogram and compares that to the theoretical distribution expected. For large n, we see that the histogram approaches the correct distribution.
 
 A sample run is for a mean of 5 and standard deviation of 2 is shown below:
-![Sample run with mean of 5 and standard deviation of 2](brownian_motion.png)
+![Sample run with mean of 5 and standard deviation of 2](Images/brownian_motion.png)
 
 ### Buffon's Needle
 
@@ -19,7 +19,7 @@ While the most popular method to compute pi using random sapmpling is to project
 
 An example run with 1000 needles is shown below:
 
-![Example run with 1000 needles](buffons_needle.png)
+![Example run with 1000 needles](Images/buffons_needle.png)
 
 ### n Dimensional Sphere
 

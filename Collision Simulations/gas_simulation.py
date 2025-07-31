@@ -21,9 +21,9 @@ v = np.zeros((2,n))
 vi = 3
 v[0][ixr] = -vi; v[0][ixl] = vi
 
-varray = np.linspace(0, vi*4, 1000) 
-a = 2/vi**2
-fv = a*varray*np.exp(-a*varray**2 / 2) # Theoretical Maxwell-Boltzmann Distribution
+varray = np.linspace(0, vi * 4, 1000) 
+a = 2 / vi**2
+fv = a*varray*np.exp(-a * varray**2 / 2) # Theoretical Maxwell-Boltzmann Distribution
 
 def calculate_motion(r,v):
     rs = np.zeros((frames,2,n)) # History of all position vectors for each frame
@@ -34,7 +34,7 @@ def calculate_motion(r,v):
         handle_collision(r,v)
         handle_wall_collision(r,v)
 
-        r += v*h
+        r += v * h
 
         rs[i] = r.copy(); vs[i] = v.copy()
     return rs, vs
@@ -64,11 +64,12 @@ def animate(i):
     ax1.add_collection(circlescollection)
 
     ax2.set_xlabel('Velocity'); ax2.set_ylabel('Probability')
-    ax2.axis([0,vi*4,0,0.5])
+    ax2.axis([0,vi * 4,0,0.5])
     ax2.hist([np.linalg.norm(v[:,i]) for i in particles], bins = 15, density = True) 
     ax2.plot(varray,fv)
 
 fig, (ax1, ax2) = plt.subplots(1,2)
+fig.suptitle(f"{n } Particle Gas Simulation and \nComparison with Maxwell-Boltzmann Distribution", fontsize=14)
 ax1.set_aspect('equal'); 
 ax2.set_box_aspect(1)
 

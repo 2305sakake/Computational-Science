@@ -18,7 +18,7 @@ plt.hist(sites, bins=np.arange(-0.5, 12.5, 1), edgecolor = 'black', density = Tr
 
 # Plot theoretical Boltzmann distribution
 xs = np.linspace(0,12,1000)
-ys = np.log(2)*np.exp(-xs*np.log(2))
+ys = np.log(2) * np.exp(-xs * np.log(2))
 plt.plot(xs,ys)
 
 plt.xlabel("Units of Energy")

@@ -17,7 +17,7 @@ h = 6.626e-34; c = 3e8; k = 1.381e-23
 
 # Define Planck's law
 def planck_law(wavelength, T,a):
-    return a*(8*np.pi*h*c)/(wavelength**5)/(np.exp((h*c)/(wavelength * k * T))-1)
+    return a * (8 * np.pi * h * c) / (wavelength**5) / (np.exp((h * c) / (wavelength * k * T)) - 1)
 
 # Fit data against Planck's law using scipy's curve_fit
 popt, pcov = curve_fit(planck_law, wavelength, irradiance, p0=[5500,1])
@@ -27,8 +27,8 @@ print(f"Fitted temperature: {T_fit:.2f} K")
 print(f"Fitted temperature error: {T_fit_err:.2f} K")
 
 # Plot data and fitted curve
-plt.plot(wavelength*1e9, irradiance)
-plt.plot(wavelength*1e9, planck_law(wavelength,T_fit,popt[1]))
+plt.plot(wavelength * 1e9, irradiance)
+plt.plot(wavelength * 1e9, planck_law(wavelength,T_fit,popt[1]))
 plt.xlabel('Wavelength (nm)')
 plt.ylabel('Irradiance (W/m²/nm)')
 plt.title('Experimental vs Fitted Blackbody Curve')

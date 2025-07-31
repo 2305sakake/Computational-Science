@@ -14,16 +14,16 @@ v = np.array([3.,0.]) # velocity vector
 
 def func(x):
     """Curve over which the ball can bounce on"""
-    return 2*np.exp(-x**2)
+    return 2 * np.exp(-x**2)
 
 def calculate_distance(f, r, x):
     """Calculates the distance bewteen the particle and the curve"""
-    return np.hypot(x-r[0],f(x)-r[1])
+    return np.hypot(x - r[0], f(x) - r[1])
 
 def calculate_deriv(f,x):
     """Central difference algorithm for caluclating derivative"""
     h = 0.001
-    return (f(x+h/2)-f(x-h/2))/h
+    return (f(x + h/2) - f(x - h/2)) / h
 
 def handle_collision(r,v):
     """Detects whether a colliision has occured and changes velocity of ball accordingly"""
@@ -35,26 +35,26 @@ def handle_collision(r,v):
         v[1] *= -cr
     else:
         for i in range(2):
-            x = r[0]+0.01*(-1)**i # checks x distance of 0.01 on both sides
+            x = r[0] + 0.01 * (-1)**i # checks x distance of 0.01 on both sides
             dist = calculate_distance(func, r, x)
             if dist < 0.05:
-                deriv = calculate_deriv(func,x)
+                deriv = calculate_deriv(func, x)
                 if deriv == 0:
                     n = np.array([0,1]) # normal vector points up
                 else:
                     n = np.array([1,-1/deriv])
-                n = n/(n[0]**2+n[1]**2)**(1/2) # normalize vector
-                v -= 2*cr*np.dot(v,n)*n
+                n = n/(n[0]**2 + n[1]**2)**(1/2) # normalize vector
+                v -= 2 * cr * np.dot(v,n) * n
                 break
     return v
 
 def calculate_motion(r,v):
     rs = np.zeros((frames,2)) # history of all the position vectors for every frame
     for i in range(0, frames):
-        v[1] -= g*dt
+        v[1] -= g * dt
         v = handle_collision(r,v)
 
-        r += dt*v
+        r += dt * v
 
         rs[i] = r.copy()
     return rs
@@ -74,7 +74,7 @@ ax.set_aspect('equal')
 xs = np.arange(lwall,rwall,0.01)
 ax.plot(xs,func(xs))
 
-ball = ax.add_patch(plt.Circle((r[0],r[1]), 0.05))
+ball = ax.add_patch(plt.Circle((r[0],r[1]),0.05))
 line, = ax.plot([], [])
 
 trace_path = False

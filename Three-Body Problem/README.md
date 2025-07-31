@@ -14,4 +14,4 @@ Also note that when running this program, the bodies can sometimes abruptly fly 
 
 A sample run for the three body program is shown below:
 
-![Sample run of three body simulation](threebody.png)
+![Sample run of three_body.py](three_body.gif)

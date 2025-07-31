@@ -15,7 +15,7 @@ t = np.arange(0, T, h)
 # Lorenz system function
 def lorentz(r, t, sigma, rho, beta):
     x, y, z = r
-    return [sigma*(y - x), x*(rho - z) - y, x*y - beta*z]
+    return [sigma * (y - x), x * (rho - z) - y, x * y - beta * z]
 
 # Integrate trajectories
 evolution1 = odeint(lorentz, r1, t, args=(sigma, rho, beta))

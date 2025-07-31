@@ -10,5 +10,5 @@ This program works by using the Runge-Kutta method (rk4) to solve the differenti
 
 With the trajectory in physical space and configuration space calcualted, these can then be plotted using vPython or matplotlib. 
 
-A screenshot from an example run of the matplotlib version is shown below:
-![Example run of matplotlib version](double_pendulum_example.png)
+A sample run of the matplotlib version is shown below:
+![Sample run of double_pendulum_matplotlib.py](double_pendulum.gif)

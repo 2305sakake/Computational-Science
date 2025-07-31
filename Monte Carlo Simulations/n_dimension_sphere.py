@@ -15,8 +15,8 @@ for i in range(N):
 # Convert lists into numpy arrays
 inside = np.array(inside).T if inside else np.empty((n, 0))
 
-cvolume = (2**n)*inside.shape[1]/N # Computed volume from Monte Carlo integration
-tvolume = np.pi**(n/2)/(gamma(n/2 + 1)) # Theoretical volume
+cvolume = (2**n) * inside.shape[1] / N # Computed volume from Monte Carlo integration
+tvolume = np.pi**(n / 2) / (gamma(n / 2 + 1)) # Theoretical volume
 
 print(f"Computed volume = {cvolume}")
 print(f"Theoretical volume = {tvolume}")

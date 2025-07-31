@@ -9,8 +9,8 @@ N = 1000          # Number of iterations to skip during transient phase
 n = 100          # Number of iterations to plot during steady state
 
 # Initialize array for r and x values
-rs = np.arange(r_min,r_max,r_step) 
-xs = np.empty((len(rs),n))
+rs = np.arange(r_min, r_max, r_step) 
+xs = np.empty((len(rs), n))
 
 # Loop over each r value
 for i, r in enumerate(rs):
@@ -18,11 +18,11 @@ for i, r in enumerate(rs):
 
     # Let system evolve to skip transient phase
     for _ in range(N):
-        x = r*x*(1-x)
+        x = r * x * (1 - x)
 
     # Store values for steady state
     for j in range(n):
-        x = r*x*(1-x)
+        x = r * x * (1 - x)
         xs[i,j] = x
 
 # ---Plotting---

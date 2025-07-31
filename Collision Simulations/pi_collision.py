@@ -36,7 +36,7 @@ def animate(i):
         lines.set_data(v1_history, v2_history)
         collisions_text.set_text(f"Number of collisions: {collisions}")
 
-    x1 += v1*h; x2 += v2*h
+    x1 += v1 * h; x2 += v2 * h
 
     block1.set_x(x1); block2.set_x(x2)
 
