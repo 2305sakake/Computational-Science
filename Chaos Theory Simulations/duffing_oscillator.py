@@ -4,7 +4,7 @@ from scipy.integrate import odeint
 
 # --- Parameters ---
 T1 = 250.0             # Total simulation time for phase space plot
-T2 = 100000.0           # Total simulation time for Poincare section
+T2 = 100000.0          # Total simulation time for Poincare section
 delta = 0.1            # Duffing oscillator parameters
 alpha = -1.0
 beta = 0.25
@@ -36,7 +36,7 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 # Plotting phase space trajectory
 ax1.plot(evolution1[:,0],evolution1[:,1], lw=0.75)
 ax1.plot(evolution2[:,0],evolution2[:,1], lw=0.75)
-ax1.set_title(f"Duffing Oscillator Phase Space Trajectory\n(δ={delta}, α={alpha}, β={beta}, γ={gamma}, ω={omega})")
+ax1.set_title(f"Duffing Oscillator Phase Space Trajectory\n(δ={delta},α={alpha}, β={beta}, γ={gamma}, ω={omega})")
 ax1.set_xlabel("x")
 ax1.set_ylabel("v")
 

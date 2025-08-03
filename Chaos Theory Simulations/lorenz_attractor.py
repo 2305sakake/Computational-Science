@@ -12,10 +12,12 @@ r2 = (1, 0, 10.001) # Same initial position but with small pertubation
 
 t = np.arange(0, T, h)
 
-# Lorenz system function
-def lorentz(r, t, sigma, rho, beta):
-    x, y, z = r
-    return [sigma * (y - x), x * (rho - z) - y, x * y - beta * z]
+def lorentz(state, t, sigma, rho, beta):
+    """
+    Defines the Lorenz system of ODEs and returns the first derivatives of the state array
+    """
+    x, y, z = state
+    return [sigma * (y - x), x * (rho - z) - y, x*y - beta*z]
 
 # Integrate trajectories
 evolution1 = odeint(lorentz, r1, t, args=(sigma, rho, beta))
@@ -35,11 +37,11 @@ ax.set_zlabel("Z")
 line1, = ax.plot([], [], [], lw=0.75, color='blue', )
 line2, = ax.plot([], [], [], lw=0.75, color='red')
 
-# Update function for animation
-def update(frame):
+def animate(frame):
+    """Function ran every frame and updates plot to create animation"""
     line1.set_data(evolution1[:frame, 0], evolution1[:frame, 1])
     line1.set_3d_properties(evolution1[:frame, 2])
-    
+
     line2.set_data(evolution2[:frame, 0], evolution2[:frame, 1])
     line2.set_3d_properties(evolution2[:frame, 2])
 
@@ -47,7 +49,7 @@ def update(frame):
 
 # Create animation
 frames = len(t)
-ani = FuncAnimation(fig, update, frames=frames, interval=10, blit=True)
+anim = FuncAnimation(fig, animate, frames=frames, interval=10, blit=True)
 
 plt.tight_layout()
 plt.show()
