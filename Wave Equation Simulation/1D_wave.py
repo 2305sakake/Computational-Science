@@ -7,7 +7,7 @@ c = 1.0          # Wave speed
 dx = 0.01        # Spatial increments
 nx = int(1 / dx)   # Number of segments on string
 C = 0.99         # Courant number (< 1 for stability)
-C2 = C**2 
+C2 = C**2
 dt = C * dx / c      # Time step size
 nt = int(T / dt)   # Number of time steps
 

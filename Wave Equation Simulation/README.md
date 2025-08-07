@@ -8,7 +8,7 @@ In this project, I have created two programs that simulate the motion of a wave 
 
 ### One Dimensional Wave Simulation
 
-As explained above, 1D_wave.py simulates the solution to the one dimensional wave equation using a finite difference approach. A few things to be noted about the code are as follows. 
+As explained above, `1D_wave.py` simulates the solution to the one dimensional wave equation using a finite difference approach. A few things to be noted about the code are as follows. 
 
 First of all, when defining the necessary parameters, we allow dx to be freely chosen by the user but not dt. This is because due to the Courant-Friedrichs-Lewy condition, we require that the Courant number, c*dt/dx, is less than or equal to 1 for numerical stability. To ensure this, we choose the Courant number to be 0.99 and calculate dt from there. 
 

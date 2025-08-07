@@ -1,16 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import cm
 
 # Parameters
 T = 10.0             # Total time
 c = 1.0              # Wave speed
 dx = 0.01            # Spatial increments (dx=dy in this case)
-nx = int(1 / dx)       # Grid segments along each axis
+nx = int(1 / dx)     # Grid segments along each axis
 C = 0.7              # Courant number (< root 2 for stability)
-C2 = C**2 
-dt = C * dx / c          # Time step size
-nt = int(T / dt)       # Number of time steps
+C2 = C**2
+dt = C * dx / c      # Time step size
+nt = int(T / dt)     # Number of time steps
 
 # Initialize spatial grid and displacement array
 x = np.linspace(0,1,nx + 1)
