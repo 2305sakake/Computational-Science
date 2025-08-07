@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
+from matplotlib import animation
 
 g = 9.81 # gravitational acceleration
 dt = 0.001 # time increment
 frames = 20000
-lwall = -2; rwall = 2 
-twall = 4; bwall = -1 
+lwall, rwall = -2, 2
+bwall, twall = -1, 4
 cr = 1 # coefficient of restitution
 
 r = np.array([1.5,3.]) # position vector
@@ -26,7 +26,7 @@ def calculate_deriv(f,x):
     return (f(x + h/2) - f(x - h/2)) / h
 
 def handle_collision(r,v):
-    """Detects whether a colliision has occured and changes velocity of ball accordingly"""
+    """Detects whether a collision has occured and changes velocity of ball accordingly"""
     if (r[0] < lwall+0.05) or (r[0] > rwall-0.05):
         v[0] *= -cr
         v[1] *= cr
@@ -49,6 +49,7 @@ def handle_collision(r,v):
     return v
 
 def calculate_motion(r,v):
+    """Calculates the motion of the ball for all frames"""
     rs = np.zeros((frames,2)) # history of all the position vectors for every frame
     for i in range(0, frames):
         v[1] -= g * dt
@@ -60,16 +61,19 @@ def calculate_motion(r,v):
     return rs
 
 def init():
+    """Initializes objects for animation"""
     return line, ball
 
 def animate(i):
+    """Function ran every frame and updates plot to create animation"""
     ball.set_center((rs[i,0],rs[i,1]))
     if trace_path:
         line.set_data(rs[:i,0],rs[:i,1])
     return line, ball
 
 fig, ax = plt.subplots()
-ax.set_xlim(lwall,rwall); ax.set_ylim(bwall,twall)
+ax.set_xlim(lwall,rwall)
+ax.set_ylim(bwall,twall)
 ax.set_aspect('equal')
 xs = np.arange(lwall,rwall,0.01)
 ax.plot(xs,func(xs))
