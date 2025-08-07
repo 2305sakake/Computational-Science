@@ -2,14 +2,14 @@ from vpython import *
 import numpy as np
 
 # Define constants and initial conditions
-t = 0.; tf = 1000. # Start and end time
+t, tf = 0.0, 1000.0 # Start and end time
 h = 0.05 # Step size
 a = 0.1 # Factor for precession due to general relativity
 
-m1 = 1.; m2 = 1.; m3 = 1. 
-r1 = np.array([10., 0., 0.]);  v1 = np.array([-0.2, 0., 0.1]) # Initial conditions for body 1
-r2 = np.array([-10., 0., 0.]); v2 = np.array([0., 0.1, -0.1]) # Initial conditions for body 2
-r3 = np.array([0., 0., 5.]);  v3 = np.array([0.2, -0.1, 0.]) # Initial conditions for body 3
+m1, m2, m3 = 1.0, 1.0, 10.0
+r1, v1 = np.array([10.0, 0.0, 0.0]), np.array([-0.2, 0.0, 0.1]) # Initial conditions for body 1
+r2, v2 = np.array([-10.0, 0.0, 0.0]), np.array([0.0, 0.1, -0.1]) # Initial conditions for body 2
+r3, v3 = np.array([0.0, 0.0, 5.]), np.array([0.2, -0.1, 0.0]) # Initial conditions for body 3
 y = np.concatenate((r1,r2,r3,v1,v2,v3)) # State array
 
 def f(y):
@@ -25,10 +25,10 @@ def f(y):
 def rk4(y):
     """ODE solver using the rk4 method"""
     k1 = h * f(y)
-    k2 = h * f(y + k1 / 2.)
-    k3 = h * f(y + k2 / 2.)
+    k2 = h * f(y + k1 / 2.0)
+    k3 = h * f(y + k2 / 2.0)
     k4 = h * f(y + k3)
-    return y + (k1 + 2.0 * (k2 + k3) + k4) / 6.
+    return y + (k1 + 2.0 * (k2 + k3) + k4) / 6.0
 
 # Set up vPython canvas and objects
 scene = canvas(x=0, y=0, width=700, height=700)
