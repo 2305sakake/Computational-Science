@@ -7,8 +7,9 @@ F, k = 0.06, 0.062 # Feed and kill constants
 dt = 1 # Time interval
 iterations = 25000 # Number of iterations
 
-u = np.ones((N, N)); v = np.zeros((N, N))
-r = 20; c = N//2
+u, v = np.ones((N, N)), np.zeros((N, N))
+r = 20
+c = N//2
 # Set a square at the center of the grid be u = 0.5 and v = 0.25 and further perturb this square with random fluctuations
 u[c - r:c + r, c - r:c + r] = 0.50*np.ones((2 * r,2 * r)) + 0.25*np.random.rand(2 * r,2 * r)
 v[c - r:c + r, c - r:c + r] = 0.25*np.ones((2 * r,2 * r)) + 0.25*np.random.rand(2 * r,2 * r)
