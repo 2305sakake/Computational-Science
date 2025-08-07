@@ -13,14 +13,14 @@ ys = np.zeros((2,n)) # Stores y positions of the two ends of each needle
 
 # Iterate through each needle and calculate positions of two ends of needle
 for i in range(n):
-   position = positions[:,i]
-   angle = angles[0,i]
-   x1 = position[0] - np.cos(angle); x2 = position[0] + np.cos(angle)
-   y1 = position[1] - np.sin(angle); y2 = position[1] + np.sin(angle)
-   xs[:,i] = [x1,x2] # Add x positions to xs array
-   ys[:,i] = [y1,y2] # Add y positions to ys array
-   if y1 <= 0 <= y2:  # Needle touching y = 0
-      touching += 1
+    position = positions[:,i]
+    angle = angles[0,i]
+    x1, x2 = position[0] - np.cos(angle), position[0] + np.cos(angle)
+    y1, y2 = position[1] - np.sin(angle), position[1] + np.sin(angle)
+    xs[:,i] = [x1,x2] # Add x positions to xs array
+    ys[:,i] = [y1,y2] # Add y positions to ys array
+    if y1 <= 0 <= y2:  # Needle touching y = 0
+        touching += 1
 
 pi = 2*n/touching # Calculate approximate value for pi
 

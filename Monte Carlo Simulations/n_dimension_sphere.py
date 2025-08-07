@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.special import gamma
 
 n = 3 # Number of dimensions
