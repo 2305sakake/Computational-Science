@@ -4,19 +4,22 @@ import numpy as np
 
 # Define constants
 h = 0.01 # Step size
-m1 = 1.; m2 = 1.
-L1 = 1.; L2 = 1.; g = 9.81
+m1, m2 = 1.0, 1.0
+L1, L2 = 1.0, 1.0
+g = 9.81
 Lt = L1 + L2 + 0.2
-phi1 = np.pi/3; phi2 = np.pi; w1 = 0; w2 = 0
+phi1, phi2 = np.pi/3, np.pi
+w1, w2 = 0, 0
 
-# Define state array with initial conditions 
+# Define state array with initial conditions
 y = np.array([phi1, phi2, w1, w2])
 
 def f(y):
     """Derivatives of each component of y"""
-    s = np.sin(y[0] - y[1]); c = np.cos(y[0] - y[1])
-    tm = m1 + m2; denom = L1 * (2 * m1 + m2 - m2 * np.cos(2 * (y[0] - y[1])))
-    f2 = (-g * (2 * m1 + m2) * np.sin(y[0]) - m2 * g * np.sin(y[0] - 2 * y[1]) - 2 * s * m2 * (y[3]**2 * L2 + y[2]**2 * L1 * c)) / denom
+    s, c = np.sin(y[0] - y[1]), np.cos(y[0] - y[1])
+    tm = m1 + m2
+    denom = L1 * (2 * m1 + m2 - m2 * np.cos(2 * (y[0] - y[1])))
+    f2 = (-g * (2*m1 + m2) * np.sin(y[0]) - m2 * g * np.sin(y[0] - 2*y[1]) - 2 * s * m2 * (y[3]**2 * L2 + y[2]**2 * L1 * c)) / denom
     f3 = (2 * s * (y[2]**2 * L1 * tm + g * tm * np.cos(y[0]) + y[3]**2 * L2 * m2 * c)) / denom
     return np.array([y[2],y[3],f2,f3])
 
@@ -34,7 +37,8 @@ fig, (ax1, ax2) = plt.subplots(1,2)
 fig.suptitle("Double Pendulum Simulation", fontsize=14)
 ax1.axis([-Lt, Lt, -Lt, Lt])
 ax2.axis([-np.pi, np.pi, -np.pi, np.pi])
-ax1.set_aspect('equal'); ax2.set_aspect('equal')
+ax1.set_aspect('equal')
+ax2.set_aspect('equal')
 ax1.set_title("Simulation")
 ax2.set_title("Configuraiton space")
 ax2.set_xlabel("Top pendulum angle (rad)")
@@ -46,7 +50,7 @@ trace, = ax2.plot([], []) # Used for tracing the path in configuration space
 time_template = 'time = %.1fs'
 time_text = ax1.text(0.05, 0.9, '', transform=ax1.transAxes)
 
-history1 = np.array([y[0]]); history2 = np.array([y[1]])
+history1, history2 = np.array([y[0]]), np.array([y[1]])
 
 def animate(i):
     """Function that is ran every frame and updates plots according to the rk4 solution"""
@@ -56,8 +60,8 @@ def animate(i):
     history1 = np.append(history1, (y[0]+np.pi)%(2*np.pi)-np.pi)
     history2 = np.append(history2, (y[1]+np.pi)%(2*np.pi)-np.pi)
 
-    x1 = L1 * np.sin(y[0]); y1 = -L1 * np.cos(y[0])
-    x2 = x1 + L2 * np.sin(y[1]); y2 = y1 - L2 * np.cos(y[1])
+    x1, y1 = L1 * np.sin(y[0]), -L1 * np.cos(y[0])
+    x2, y2 = x1 + L2 * np.sin(y[1]), y1 - L2 * np.cos(y[1])
 
     line.set_data([0, x1, x2],[0, y1,y2])
     trace.set_data(history1[:i], history2[:i])

@@ -2,21 +2,24 @@ from vpython import *
 import numpy as np
 
 # Define time bounds and step size h
-t = 0.; tf = 100.
+t, tf = 0.0, 100.0
 h = 0.01
 
 # Define constants
-m1 = 1.; m2 = 1.
-L1 = 1.; L2 = 1.; g = 9.81
-phi1 = pi/3; phi2 = pi; w1 = 0; w2 = 0
+m1, m2 = 1.0, 1.0
+L1, L2 = 1.0, 1.0
+g = 9.81
+phi1, phi2 = pi/3, pi
+w1, w2 = 0, 0
 
-# Define state array with initial conditions 
+# Define state array with initial conditions
 y = np.array([phi1, phi2, w1, w2])
 
 def f(y):
     """Derivatives of each component of y"""
-    s = sin(y[0]-y[1]); c = cos(y[0]-y[1])
-    tm = m1 + m2; denom = L1*(2*m1+m2-m2*cos(2*(y[0]-y[1])))
+    s, c = sin(y[0]-y[1]), cos(y[0]-y[1])
+    tm = m1 + m2
+    denom = L1 * (2 * m1 + m2 - m2 * cos(2 * (y[0] - y[1])))
     f2 = (-g * (2 * m1 + m2) * sin(y[0]) - m2 * g * sin(y[0] - 2 * y[1]) - 2 * s * m2 * (y[3]**2 * L2 + y[2]**2 * L1 * c)) / denom
     f3 = (2 * s * (y[2]**2 * L1 * tm + g * tm * cos(y[0]) + y[3]**2 * L2 * m2 * c)) / denom
     return np.array([y[2],y[3],f2,f3])
@@ -24,10 +27,10 @@ def f(y):
 def rk4(y):
     """ODE solver using the rk4 method"""
     k1 = h * f(y)
-    k2 = h * f(y + k1 / 2.)
-    k3 = h * f(y + k2 / 2.)
+    k2 = h * f(y + k1 / 2.0)
+    k3 = h * f(y + k2 / 2.0)
     k4 = h * f(y + k3)
-    y = y + (k1 + 2.0 *(k2 + k3) + k4) / 6.
+    y = y + (k1 + 2.0 *(k2 + k3) + k4) / 6.0
     return y
 
 
@@ -44,8 +47,8 @@ def plotconfig():
     for obj in scene.objects:
         obj.visible = 0 # Removes previous configuration of objects
 
-    x1 = L1 * sin(y[0]); y1 = -L1 * cos(y[0]) # x,y position of first ball
-    x2 = x1 + L2 * sin(y[1]); y2 = y1 - L2 * cos(y[1]) # x,y position of second ball
+    x1, y1 = L1 * sin(y[0]), -L1 * cos(y[0]) # x,y position of first ball
+    x2, y2 = x1 + L2 * sin(y[1]), y1 - L2 * cos(y[1]) # x,y position of second ball
 
     sphere(pos=vec(x1, y1, 0), color=color.cyan, radius= 0.1)
     sphere(pos=vec(x2, y2, 0), color=color.cyan, radius= 0.1)
@@ -58,4 +61,4 @@ while t < tf:
     y = rk4(y)
     t += h
     plotconfig()
-    funct.plot(pos = ((y[0] + pi) % (2 * pi)-pi, (y[1] + pi) % (2 * pi) - pi)) # Trace path in configuration space
+    funct.plot(pos = ((y[0] + pi) % (2 * pi) - pi, (y[1] + pi) % (2 * pi) - pi)) # Trace path in configuration space
