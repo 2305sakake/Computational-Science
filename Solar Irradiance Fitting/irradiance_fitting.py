@@ -13,16 +13,18 @@ irradiance = df['Etr W*m-2*nm-1'].values
 irradiance = savgol_filter(irradiance, window_length=31, polyorder=3)
 
 # Define necessary constants for Planck's law
-h = 6.626e-34; c = 3e8; k = 1.381e-23
+h = 6.626e-34
+c = 3e8
+k = 1.381e-23
 
-# Define Planck's law
-def planck_law(wavelength, T,a):
+def planck_law(wavelength, T, a):
+    """Function that defines Planck's law"""
     return a * (8 * np.pi * h * c) / (wavelength**5) / (np.exp((h * c) / (wavelength * k * T)) - 1)
 
 # Fit data against Planck's law using scipy's curve_fit
 popt, pcov = curve_fit(planck_law, wavelength, irradiance, p0=[5500,1])
 perr = np.sqrt(np.diag(pcov)) # Errors for each parameter extracted from the covariance matrix
-T_fit = popt[0]; T_fit_err = perr[0]
+T_fit, T_fit_err = popt[0], perr[0]
 print(f"Fitted temperature: {T_fit:.2f} K")
 print(f"Fitted temperature error: {T_fit_err:.2f} K")
 
