@@ -22,6 +22,7 @@ u0 = np.exp(-(xs - 2) ** 2)
 
 def burgers(u, t, k, nu):
     """Defines ODE resulting from performing Fourier tranform on Burgers' equation"""
+    
     # Transform to Fourier transform basis and calculate derivatives
     u_hat = np.fft.fft(u)
     u_hat_x = 1j * k * u_hat
